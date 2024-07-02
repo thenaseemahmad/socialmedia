@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: moderate-depl
+spec:
+  selector:
+    matchLabels:
+      app: moderate
+  template:
+    metadata:
+      labels:
+        app: moderate
+    spec:
+      containers:
+      - name: moderate
+        image: naseemahmad244/moderate
+        env:
+        - name: POSTS_PORT
+          value: "4000"
+        - name: COMMENTS_PORT
+          value: "4001"
+        - name: QUERIES_PORT
+          value: "4003"
+        - name: MODERATE_PORT
+          value: "4002"
+        - name: EVENTBUS_PORT
+          value: "4004"
+        - name: POSTS_SERVICE_NAME
+          value: posts-clusterip-service
+        - name: COMMENTS_SERVICE_NAME
+          value: comments-clusterip-service
+        - name: QUERIES_SERVICE_NAME
+          value: queries-clusterip-service
+        - name: MODERATE_SERVICE_NAME
+          value: moderate-clusterip-service
+        - name: EVENTBUS_SERVICE_NAME
+          value: eventbus-clusterip-service
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: moderate-clusterip-service
+spec:
+  selector:
+    app: moderate
+  ports:
+  - port: 4002
+    targetPort: 4002
+    protocol: TCP

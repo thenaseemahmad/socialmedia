@@ -10,7 +10,7 @@ app.use(cors());
 const PORT = process.env.QUERIES_PORT;
 
 const queriesDatabase = {}; //{postId:{postId:'postId',post:"",status:"",comments:[{commentId:"",comment:"",status:""},{commentId:"",comment:"",status:""}]}}
-app.get("/queries/posts",(req,res)=>{
+app.get("/queries/getallposts",(req,res)=>{
     res.send(queriesDatabase);
 })
 

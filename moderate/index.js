@@ -29,6 +29,7 @@ async function processEvent(type,data){
         });
     }
 }
+
 app.post("/event",async(req,res)=>{
     const {type, data} = req.body;
     processEvent(type,data);

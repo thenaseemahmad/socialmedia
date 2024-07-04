@@ -12,12 +12,12 @@ const PORT = process.env.POSTS_PORT;
 
 const posts = {}; //{postId: {postId:postId, post:"", status:""}}
 
-app.get('/posts',(req,res)=>{
+app.get('/posts/getallposts',(req,res)=>{
     res.send(posts);
 })
 
 //req.body = {post:""}
-app.post('/posts',async (req, res)=>{
+app.post('/posts/create',async (req, res)=>{
     const postId = uuidv4();
     const {post} = req.body;
     const postObj = {postId:postId, post:post, status:"awaiting"}

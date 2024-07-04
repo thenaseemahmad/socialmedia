@@ -11,12 +11,12 @@ const PORT = process.env.COMMENTS_PORT;
 
 
 const commentsByPostId = {} //{postId:[{commentId:commentId, comment:'',status:"awaiting"}],{}}
-app.get('/posts/:postId/comments',(req,res)=>{
+app.get('/post/:postId/getallcomments',(req,res)=>{
     res.send(commentsByPostId[req.params.postId]);
 });
 
 // req.body = 
-app.post('/posts/:postId/comments',(req,res)=>{ 
+app.post('/post/:postId/createcomment',(req,res)=>{ 
     const commentId = uuidv4();
     const {comment} = req.body;
     const comments = commentsByPostId[req.params.postId] || [];    

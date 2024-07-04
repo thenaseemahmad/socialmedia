@@ -12,7 +12,7 @@ spec:
         app: comments
     spec:
       containers:
-      - name: moderate
+      - name: comments
         image: naseemahmad244/comments
         env:
         - name: POSTS_PORT

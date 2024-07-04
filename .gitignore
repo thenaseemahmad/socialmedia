@@ -1,5 +1,5 @@
-client/.env
 comments/.env
+react-client/.env
 eventbus/.env
 moderate/.env
 posts/.env
@@ -11,3 +11,4 @@ infra/k8s/client-depl.yaml
 moderate/node_modules/
 posts/node_modules/
 queries/node_modules/
+react-client/node_modules/

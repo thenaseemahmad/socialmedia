@@ -1,0 +1,60 @@
+apiVersion: skaffold/v2alpha1
+kind: Config
+deploy:
+  kubeContext: docker-desktop
+  kubectl:
+    manifests:
+      - ./infra/k8s/*
+build:
+  local:
+    push: true
+  artifacts:
+    - image: naseemahmad244/client
+      context: react-client
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: 'src/comps/*'
+    - image: naseemahmad244/posts
+      context: posts
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: '*.js'
+            
+    - image: naseemahmad244/comments
+      context: comments
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: '*.js'
+    - image: naseemahmad244/eventbus
+      context: eventbus
+      docker:
+        dockerfile: Dockerfile
+      sync:
+       manual:
+          - dest: .
+            src: '*.js'
+    - image: naseemahmad244/moderate
+      context: moderate
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: '*.js'
+    - image: naseemahmad244/queries
+      context: queries
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: .
+            src: '*.js'

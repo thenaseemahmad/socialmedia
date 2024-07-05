@@ -14,7 +14,7 @@ export default () => {
 
     return (
         <>
-            <h3>New Post</h3>
+            <h3>New Post Here</h3>
             <div className="mb-3">
                 <input value={newpost} onChange={(e) => { setNewpost(e.target.value) }} placeholder="New post title/detail here" type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
             </div>
